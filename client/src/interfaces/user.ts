@@ -4,6 +4,8 @@ export default interface Iuser {
   firstName: string;
   lastName: string;
   image: string;
+  member: boolean;
+  admin: boolean;
   createdAt: Date;
 }
 
@@ -12,6 +14,9 @@ export interface InewUser {
   firstName: string;
   lastName: string;
   password: string;
+  image: string;
+  member: boolean;
+  admin: boolean;
 }
 
 export interface Icredentials {

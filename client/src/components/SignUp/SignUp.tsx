@@ -40,6 +40,9 @@ const SignUp = () => {
         password,
         firstName,
         lastName,
+        image: "image",
+        member: false,
+        admin: false,
       });
       console.log(response);
     } catch (error: any) {

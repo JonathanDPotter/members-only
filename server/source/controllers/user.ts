@@ -13,19 +13,21 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const { displayName } = body;
   const exists = await User.findOne({ displayName });
 
-  if (exists) return res.status(500).json({ message: "Display name in use." });
+  if (exists) {
+    return res.status(500).json({ message: "Display name in use." });
+  } else {
+    const user = new User({
+      ...body,
+    });
 
-  const user = new User({
-    ...body,
-  });
-
-  const hash = await bcrypt.hash(user.password, 10);
-  user.password = hash;
-  try {
-    const result = await user.save();
-    return res.status(201).json({ user: result });
-  } catch (error: any) {
-    return res.status(500).json({ message: error.message, error });
+    const hash = await bcrypt.hash(user.password, 10);
+    user.password = hash;
+    try {
+      const result = await user.save();
+      return res.status(201).json({ user: result });
+    } catch (error: any) {
+      return res.status(500).json({ message: error.message, error });
+    }
   }
 };
 

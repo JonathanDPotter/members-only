@@ -12,6 +12,17 @@ const Home = () => {
     <div className="home">
       <h1>Home</h1>
       <h1>{`Hello ${auth ? auth.displayName : "guest"}.`}</h1>
+      {auth && (
+        <ul>
+          <li>{auth.admin ? "true" : "false"}</li>
+          <li>{auth.createdAt}</li>
+          <li>{auth.displayName}</li>
+          <li>{auth.firstName}</li>
+          <li>{auth.lastName}</li>
+          <li>{auth.image}</li>
+          <li>{auth.member ? "true" : "false"}</li>
+        </ul>
+      )}
     </div>
   );
 };

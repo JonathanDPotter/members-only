@@ -25,6 +25,8 @@ export default (passport: PassportStatic) => {
           firstName: name?.givenName,
           lastName: name?.familyName,
           image,
+          member: false,
+          admin: false,
         };
 
         try {

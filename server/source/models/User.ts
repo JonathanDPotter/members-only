@@ -27,7 +27,19 @@ const UserSchema = new mongoose.Schema({
 
   image: {
     type: String,
+    required: true,
   },
+
+  member: {
+    type: Boolean,
+    required: true,
+  },
+
+  admin: {
+    type: Boolean,
+    required: true,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
