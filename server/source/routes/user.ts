@@ -7,6 +7,6 @@ router.post("/create/user", controller.createUser);
 
 router.get("/get/users", controller.getAllUsers);
 
-router.post("/update/user", controller.updateUser);
+router.put("/update/user", controller.updateUser);
 
 export = router;

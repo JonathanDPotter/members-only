@@ -18,21 +18,6 @@ const getMessages = async (req: Request, res: Response) => {
   } catch (error: any) {
     return res.status(500).json({ message: error.message, error });
   }
-
-  // Message.find()
-  //   .exec()
-  //   .then((result: any) => {
-  //     return res.status(200).json({
-  //       users: result,
-  //       count: result.length,
-  //     });
-  //   })
-  //   .catch((error: Error) => {
-  //     return res.status(500).json({
-  //       message: error.message,
-  //       error,
-  //     });
-  //   });
 };
 
 export default { createMessage, getMessages };

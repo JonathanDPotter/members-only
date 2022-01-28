@@ -1,13 +1,15 @@
 import axios from "axios";
 // types
 import { Imessage } from "../interfaces/message";
-import { Icredentials, InewUser } from "../interfaces/user";
+import { Icredentials, InewData, InewUser } from "../interfaces/user";
 
 const getAuth = () => axios.get("/api/auth/get/auth");
 
 const createUser = (user: InewUser) =>
   axios.post("/api/user/create/user", user);
 
+const updateUser = (newData: InewData) =>
+  axios.put("/api/user/update/user", newData);
 const login = (credentials: Icredentials) =>
   axios.post("/api/auth/local", credentials);
 
@@ -16,4 +18,11 @@ const createMessage = (message: Imessage) =>
 
 const getMessages = () => axios.get("/api/messages/get/messages");
 
-export default { getAuth, login, createUser, createMessage, getMessages };
+export default {
+  getAuth,
+  login,
+  createUser,
+  updateUser,
+  createMessage,
+  getMessages,
+};

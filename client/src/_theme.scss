@@ -15,7 +15,7 @@ $white: whitesmoke;
 
 @mixin big-button {
   height: 5rem;
-  width: 30rem;
+  width: 25rem;
   font-size: 2rem;
   display: flex;
   justify-content: space-around;
@@ -23,4 +23,43 @@ $white: whitesmoke;
   border: none;
   color: white;
   background-color: grey;
+}
+
+@mixin auth-form {
+  height: 40vh;
+  width: 25rem;
+  @include flex-column-center;
+  justify-content: space-between;
+  .label-input {
+    width: 100%;
+    border-bottom: 2px solid grey;
+    input,
+    &:focus {
+      float: right;
+      width: 60%;
+      border: none;
+      outline: none;
+      background-color: lightgrey;
+    }
+  }
+}
+
+@mixin or-line {
+  background-color: grey;
+  height: 2px;
+  width: 25rem;
+  margin: 2rem 0;
+  position: relative;
+  @include flex-column-center;
+
+  .or {
+    @include flex-column-center;
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    margin: auto;
+    border: 2px solid grey;
+    border-radius: 50%;
+    background-color: whitesmoke;
+  }
 }

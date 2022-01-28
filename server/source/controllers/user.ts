@@ -47,19 +47,21 @@ const getAllUsers = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-const updateUser = (req: Request, res: Response, next: NextFunction) => {
-  const { id, newInfo } = req.body;
-  return User.findByIdAndUpdate(id, newInfo)
-    .exec()
-    .then((result: any) => {
-      return res.status(200).json({ user: result });
-    })
-    .catch((error: Error) => {
-      return res.json({
-        message: error.message,
-        error,
-      });
+const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+  const { displayName } = req.body;
+  try {
+    const result = await User.findOneAndUpdate(
+      { displayName },
+      { ...req.body },
+      { new: true }
+    ).exec();
+    return res.status(200).json({ user: result });
+  } catch (error: any) {
+    return res.json({
+      message: error.message,
+      error,
     });
+  }
 };
 
 export default { createUser, getAllUsers, updateUser };

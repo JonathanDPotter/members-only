@@ -1,13 +1,13 @@
 @use "../../theme";
 
-.create-message {
+.join {
   @include theme.page;
   @include theme.flex-column-center;
 
   form {
     @include theme.auth-form;
   }
-  button {
+    button {
     @include theme.big-button;
   }
 }

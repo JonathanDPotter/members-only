@@ -23,3 +23,13 @@ export interface Icredentials {
   displayName: string;
   password: string;
 }
+
+export interface InewData {
+  displayName?: string;
+  firstName?: string;
+  lastName?: string;
+  password?: string;
+  image?: string;
+  member?: boolean;
+  admin?: boolean;
+}

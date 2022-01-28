@@ -21,6 +21,7 @@ const NavBar = () => {
     return (
       <>
         <NavLink to="/create-message">Create Message</NavLink>
+        <NavLink to="/join">Join</NavLink>
         <NavLink to="/logout">Log Out</NavLink>
       </>
     );

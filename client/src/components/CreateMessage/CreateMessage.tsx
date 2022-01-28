@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 // utils
 import { useAppSelector as useSelector } from "../../store/hooks";
 import api from "../../api";
+// styles
+import "./CreateMessage.scss";
 
 const CreateMessage = () => {
   const initialState = { title: "", message: "" };

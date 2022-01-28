@@ -135,7 +135,9 @@ const SignUp = () => {
           Submit
         </button>
       </form>
-      <div className="or">or</div>
+      <div className="line">
+        <div className="or">or</div>
+      </div>
       <button onClick={handleGoogle}>
         <FontAwesomeIcon icon={faGoogle} />
         <span>Sign Up with Google</span>
