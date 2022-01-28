@@ -20,4 +20,13 @@ const getMessages = async (req: Request, res: Response) => {
   }
 };
 
-export default { createMessage, getMessages };
+const deleteMessage = async (req: Request, res: Response) => {
+  try {
+    const response = await Message.findByIdAndDelete(req.body).exec();
+    res.status(204);
+  } catch (error: any) {
+    res.status(500).json(error);
+  }
+};
+
+export default { createMessage, getMessages, deleteMessage };

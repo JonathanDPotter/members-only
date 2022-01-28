@@ -19,10 +19,11 @@ const Home = () => {
           messages.map((message) => (
             <Message
               key={message.createdAt}
-              author={message.author}
+              _id={message._id}
               title={message.title}
-              message={message.message}
-              date={message.createdAt}
+              author={message.author}
+              body={message.body}
+              createdAt={message.createdAt}
             />
           ))}
       </div>

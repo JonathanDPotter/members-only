@@ -32,6 +32,7 @@ const App = () => {
       const { messages } = response.data;
       messages.forEach((message: Imessage) => dispatch(addMessage(message)));
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

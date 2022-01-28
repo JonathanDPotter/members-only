@@ -21,8 +21,7 @@ const Join = () => {
     if (auth && member === "MEMBER") {
       try {
         const { displayName } = auth;
-        const response = await api.updateUser({ displayName, member: true });
-        console.log(response.data.user);
+        await api.updateUser({ displayName, member: true });
         window.alert("success!");
         navigate("/");
         navigate(0);
@@ -32,11 +31,10 @@ const Join = () => {
     } else if (auth && member === "ADMIN") {
       try {
         const { displayName } = auth;
-        const response = await api.updateUser({
+        await api.updateUser({
           displayName,
           admin: true,
         });
-        console.log(response.data.user);
         window.alert("ADMIN");
         navigate("/");
         navigate(0);

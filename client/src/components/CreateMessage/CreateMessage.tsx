@@ -7,9 +7,9 @@ import api from "../../api";
 import "./CreateMessage.scss";
 
 const CreateMessage = () => {
-  const initialState = { title: "", message: "" };
+  const initialState = { title: "", body: "" };
   const [state, setState] = useState(initialState);
-  const { title, message } = state;
+  const { title, body } = state;
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const CreateMessage = () => {
   ) => {
     const { name, value } = event.currentTarget;
     if (name === "title") setState({ ...state, title: value });
-    if (name === "message") setState({ ...state, message: value });
+    if (name === "body") setState({ ...state, body: value });
   };
 
   const handleSubmit = (event: FormEvent) => {
@@ -52,11 +52,11 @@ const CreateMessage = () => {
           />
         </div>
         <div className="label-input">
-          <label htmlFor="message">Message: </label>
+          <label htmlFor="body">Message: </label>
           <textarea
-            name="message"
+            name="body"
             onChange={handleChange}
-            value={message}
+            value={body}
             maxLength={1500}
             required
           />
