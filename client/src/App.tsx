@@ -12,6 +12,9 @@ import NavBar from "./components/NavBar/NavBar";
 import SignUp from "./components/SignUp/SignUp";
 import Framer from "./components/Framer/Framer";
 import LogIn from "./components/LogIn/LogIn";
+import CreateMessage from "./components/CreateMessage/CreateMessage";
+import { addMessage } from "./store/slices/messageSlice";
+import { Imessage } from "./interfaces/message";
 
 const App = () => {
   const location = useLocation();
@@ -23,6 +26,10 @@ const App = () => {
       const user = response.data;
       dispatch(addAuthUser(user));
     });
+    api.getMessages().then((response) => {
+      const {messages} = response.data;
+      messages.forEach((message: Imessage) => dispatch(addMessage(message)));
+    });
   }, [dispatch]);
 
   return (
@@ -31,6 +38,10 @@ const App = () => {
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.key}>
           <Route path="/" element={<Framer component={<Home />} />} />
+          <Route
+            path="/create-message"
+            element={<Framer component={<CreateMessage />} />}
+          />
           <Route
             path="/signup"
             element={

@@ -8,14 +8,30 @@ import "./NavBar.scss";
 const NavBar = () => {
   const { auth } = useSelector((store) => store.auth);
 
+  const GuestLinks = () => {
+    return (
+      <>
+        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login">Log In</NavLink>
+      </>
+    );
+  };
+
+  const AuthLinks = () => {
+    return (
+      <>
+        <NavLink to="/create-message">Create Message</NavLink>
+        <NavLink to="/logout">Log Out</NavLink>
+      </>
+    );
+  };
+
   return (
     <header>
-      <h1>Mern Auth</h1>
+      <h1>Members Only</h1>
       <nav>
         <NavLink to="/">Home</NavLink>
-        {!auth && <NavLink to="/signup">Sign Up</NavLink>}
-        {!auth && <NavLink to="/login">Log In</NavLink>}
-        {auth && <NavLink to="/logout">Log Out</NavLink>}
+        {auth ? <AuthLinks /> : <GuestLinks />}
       </nav>
     </header>
   );
