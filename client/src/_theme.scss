@@ -1,0 +1,26 @@
+$white: whitesmoke;
+
+@mixin page {
+  height: 90vh;
+  width: 100vw;
+  background-color: $white;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin big-button {
+  height: 5rem;
+  width: 30rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+  color: white;
+  background-color: grey;
+}

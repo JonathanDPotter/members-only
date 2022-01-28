@@ -1,0 +1,72 @@
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { Strategy as LocalStrategy } from "passport-local";
+import bcrypt from "bcrypt";
+import mongoose, { Document, Error } from "mongoose";
+import User from "../models/User";
+import { PassportStatic } from "passport";
+
+export default (passport: PassportStatic) => {
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID ?? "",
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+        passReqToCallback: true,
+        callbackURL: "/api/auth/google/callback",
+      },
+      async (request, _accessToken, _refreshToken, profile, done) => {
+        const { id, displayName, name, photos } = profile;
+        let image = "image";
+        if (photos) image = photos[0].value;
+
+        const newUser = {
+          googleId: id,
+          displayName,
+          firstName: name?.givenName,
+          lastName: name?.familyName,
+          image,
+        };
+
+        try {
+          let user = await User.findOne({ googleId: id });
+          if (user) {
+            done(null, user);
+          } else {
+            user = await User.create(newUser);
+            done(null, user);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    )
+  );
+
+  passport.use(
+    new LocalStrategy(
+      { usernameField: "displayName" },
+      async (displayName: string, password: string, done: any) => {
+        const user = await User.findOne({ displayName });
+        if (!user) {
+          return done(null, false, {
+            message: "No user with that display name.",
+          });
+        } else {
+          try {
+            if (await bcrypt.compare(password, user.password)) {
+              return done(null, user);
+            } else {
+              return "Password incorrect.";
+            }
+          } catch (error: any) {
+            return done(error);
+          }
+        }
+      }
+    )
+  );
+
+  passport.serializeUser((user, done) => done(null, user));
+
+  passport.deserializeUser((id, done) => User.findById(id, done));
+};

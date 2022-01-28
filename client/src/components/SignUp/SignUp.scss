@@ -1,0 +1,53 @@
+@use "../../theme";
+
+.sign-up {
+  @include theme.page;
+  @include theme.flex-column-center;
+
+  h1 {
+    margin-bottom: 5rem;
+  }
+
+  form {
+    height: 40vh;
+    width: 30rem;
+    @include theme.flex-column-center;
+    justify-content: space-between;
+    .label-input {
+      width: 100%;
+      border-bottom: 2px solid grey;
+      input,
+      &:focus {
+        float: right;
+        width: 60%;
+        border: none;
+        outline: none;
+        background-color: lightgrey;
+      }
+    }
+  }
+
+  .line {
+    background-color: grey;
+    height: 2px;
+    width: 30rem;
+    margin: 2rem 0;
+    position: relative;
+    @include theme.flex-column-center;
+
+    .or {
+      @include theme.flex-column-center;
+      height: 2rem;
+      width: 2rem;
+      position: absolute;
+      margin: auto;
+      border: 2px solid grey;
+      border-radius: 50%;
+      background-color: whitesmoke;
+    }
+  }
+
+  button {
+    @include theme.big-button;
+  }
+}

@@ -1,0 +1,15 @@
+@use "../../theme";
+
+.log-out {
+  @include theme.page;
+  @include theme.flex-column-center;
+
+  h1 {
+    margin-bottom: 5rem;
+  }
+
+  button {
+    @include theme.big-button;
+    width: 15rem;
+  }
+}

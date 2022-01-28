@@ -1,0 +1,27 @@
+header {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
+  nav {
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+
+    a {
+      color: black;
+      text-decoration: underline;
+      text-decoration-color: lightgrey;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 5px;
+      transition: text-decoration-color 400ms ease-in;
+    }
+
+    .active {
+      text-decoration-color: black;
+      transition: text-decoration-color 400ms ease-in;
+    }
+  }
+}
