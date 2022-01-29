@@ -9,7 +9,6 @@
   "scripts": {
     "dev": "concurrently \"nodemon source/server.ts\" \"cd .. && cd client && npm start\"",
     "deploy": "git add . && git commit -m Heroku && git push heroku main",
-    "postinstall": "tsc",
     "start": "node dist/server.js"
   },
   "keywords": [

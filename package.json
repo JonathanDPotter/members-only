@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/dist/server.js"
+    "start": "node server/dist/server.js",
+    "postinstall": "cd server && npm install && cd .. && cd server && npm install"
   },
   "repository": {
     "type": "git",
