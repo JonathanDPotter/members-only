@@ -53,10 +53,11 @@ const CreateMessage = () => {
             name="title"
             onChange={handleChange}
             value={title}
+            autoFocus
             required
           />
         </div>
-        <div className="label-input">
+        <div className="label-input textarea">
           <label htmlFor="body">Message: </label>
           <textarea
             name="body"

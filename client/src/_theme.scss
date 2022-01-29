@@ -28,6 +28,9 @@ $white: whitesmoke;
 @mixin auth-form {
   height: 40vh;
   width: 25rem;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+  padding-bottom: 0;
   @include flex-column-center;
   justify-content: space-between;
   .label-input {

@@ -6,6 +6,20 @@
 
   form {
     @include theme.auth-form;
+
+    textarea {
+      height: 20vh;
+      width: 80%;
+      float: right;
+      resize:none;
+      border: none;
+      background-color: lightgrey;
+      outline: none;
+    }
+
+    .textarea {
+      border-bottom: none;
+    }
   }
   button {
     @include theme.big-button;

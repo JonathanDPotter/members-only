@@ -48,7 +48,9 @@ const Message: FC<Iprops> = ({
       </div>
       <div className="date-time">
         <p>{new Date(createdAt).toLocaleDateString()}</p>
-        <p>{new Date(createdAt).toLocaleTimeString()}</p>
+        <p>
+          {new Date(createdAt).toLocaleTimeString("en-us", { hour: '2-digit', minute: '2-digit', hour12: true })}
+        </p>
       </div>
       <div className={auth?.admin ? "delete auth" : "delete guest"}>
         <button
