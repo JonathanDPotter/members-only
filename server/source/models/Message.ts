@@ -6,6 +6,11 @@ const MessageSchema = new mongoose.Schema({
     required: true,
   },
 
+  image: {
+    type: String,
+    required: true,
+  },
+
   title: {
     type: String,
     required: true,

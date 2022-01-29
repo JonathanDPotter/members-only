@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // utils
@@ -15,14 +15,22 @@ const SignUp = () => {
     passwordTwo: "",
     firstName: "",
     lastName: "",
+    avatar: { gender: "m", id: 0 },
   };
 
   const [state, setState] = useState(initialState);
+  const [image, setImage] = useState(
+    "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/100.png"
+  );
+
+  const { displayName, firstName, lastName, password, passwordTwo, avatar } =
+    state;
 
   const navigate = useNavigate();
 
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
+    console.log(name, value);
     if (name === "displayName") setState({ ...state, displayName: value });
     if (name === "password") setState({ ...state, password: value });
     if (name === "passwordTwo") setState({ ...state, passwordTwo: value });
@@ -30,7 +38,12 @@ const SignUp = () => {
     if (name === "lastName") setState({ ...state, lastName: value });
   };
 
-  const { displayName, firstName, lastName, password, passwordTwo } = state;
+  const handleGenerateAvatar = () => {
+    setState({
+      ...state,
+      avatar: { gender: "m", id: Math.floor(Math.random() * 100) },
+    });
+  };
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -40,7 +53,7 @@ const SignUp = () => {
         password,
         firstName,
         lastName,
-        image: "image",
+        image,
         member: false,
         admin: false,
       });
@@ -56,9 +69,16 @@ const SignUp = () => {
     window.open("http://localhost:1337/api/auth/google", "_self");
   };
 
+  useEffect(() => {
+    api.getAvatar(avatar).then((url) => {
+      if (url) setImage(url.data);
+    });
+  }, [avatar]);
+
   return (
     <div className="sign-up">
       <h1>Sign Up</h1>
+      <img src={image} alt="userAvatar" />
       <form action="submit" onSubmit={handleSubmit}>
         <div className="label-input">
           <label htmlFor="displayName">Display Name: </label>
@@ -120,6 +140,14 @@ const SignUp = () => {
           {password && passwordTwo && password !== passwordTwo && (
             <span>!!!</span>
           )}
+        </div>
+        <div className="label-input">
+          <label htmlFor="avatar">New Avatar:</label>
+          <input
+            type="button"
+            onClick={handleGenerateAvatar}
+            value="Generate New Avatar"
+          />
         </div>
         <button
           type="submit"

@@ -19,9 +19,13 @@ const createMessage = (message: InewMessage) =>
 const getMessages = () => axios.get("/api/messages/get/messages");
 
 const deleteMessage = (id: string) => {
-  console.log(id);
   axios.post("/api/messages/delete/message", {_id: id});
 };
+
+const getAvatar = async (options: { gender: string, id: number }) => {
+  const response = await axios.post("/api/avatar/get/avatar", options);
+  return response;
+}
 
 const api = {
   getAuth,
@@ -31,6 +35,7 @@ const api = {
   createMessage,
   getMessages,
   deleteMessage,
+  getAvatar
 };
 
 export default api;

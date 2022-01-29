@@ -3,13 +3,22 @@
 .sign-up {
   @include theme.page;
   @include theme.flex-column-center;
+  overflow-x: hidden;
 
   h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  img {
+    margin-bottom: 2rem;
   }
 
   form {
     @include theme.auth-form;
+    select {
+      width: 8rem;
+      float: right;
+    }
   }
 
   .line {

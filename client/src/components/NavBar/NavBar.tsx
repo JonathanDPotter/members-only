@@ -34,6 +34,7 @@ const NavBar = () => {
         <NavLink to="/">Home</NavLink>
         {auth ? <AuthLinks /> : <GuestLinks />}
       </nav>
+      {auth && <img src={auth.image} alt="userAvatar" />}
     </header>
   );
 };

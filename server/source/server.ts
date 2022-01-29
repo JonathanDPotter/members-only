@@ -10,6 +10,7 @@ import MongoStore from "connect-mongo";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
 import messageRoutes from "./routes/message";
+import avatarRoutes from "./routes/avatar";
 // utils
 import connectDB from "./config/db";
 import passportConfig from "./config/passport";
@@ -56,6 +57,7 @@ server.use(passport.session());
 server.use("/api/auth", authRoutes);
 server.use("/api/user", userRoutes);
 server.use("/api/messages", messageRoutes);
+server.use("/api/avatar", avatarRoutes);
 
 server.get("/", (req, res) => res.send(req.body));
 server.get("/fail", (req, res) => res.send(req.body));

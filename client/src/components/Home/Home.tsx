@@ -22,6 +22,7 @@ const Home = () => {
               _id={message._id}
               title={message.title}
               author={message.author}
+              image={message.image}
               body={message.body}
               createdAt={message.createdAt}
             />

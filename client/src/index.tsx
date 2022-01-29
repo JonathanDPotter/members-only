@@ -9,6 +9,7 @@ import App from "./App";
 // styles
 import "./index.scss";
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

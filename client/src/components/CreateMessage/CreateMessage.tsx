@@ -13,7 +13,7 @@ const CreateMessage = () => {
 
   const navigate = useNavigate();
 
-  const author = useSelector((state) => state.auth.auth?.displayName);
+  const { auth } = useSelector((state) => state.auth);
 
   const handleChange = (
     event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,9 +25,14 @@ const CreateMessage = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    author &&
+    auth &&
       api
-        .createMessage({ ...state, author, createdAt: Date.now() })
+        .createMessage({
+          ...state,
+          author: auth.displayName,
+          image: auth.image,
+          createdAt: Date.now(),
+        })
         .then((response) => {
           if (response.status === 201) {
             navigate("/");

@@ -21,7 +21,7 @@ import { Imessage } from "./interfaces/message";
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const { auth } = useAppSelector((store) => store.auth);
+  const { auth } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     api.getAuth().then((response) => {
