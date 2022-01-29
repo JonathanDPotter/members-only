@@ -4,6 +4,7 @@ $white: whitesmoke;
   min-height: 90vh;
   width: 100vw;
   background-color: $white;
+  text-align: center;
 }
 
 @mixin flex-column-center {
@@ -15,7 +16,8 @@ $white: whitesmoke;
 
 @mixin big-button {
   height: 5rem;
-  width: 25rem;
+  width: 90vw;
+  max-width: 25rem;
   font-size: 2rem;
   display: flex;
   justify-content: space-around;
@@ -27,22 +29,28 @@ $white: whitesmoke;
 
 @mixin auth-form {
   height: 40vh;
-  width: 25rem;
+  width: 90vw;
+  max-width: 25rem;
   border: 1px solid lightgrey;
   padding: 1rem;
   padding-bottom: 0;
   @include flex-column-center;
   justify-content: space-between;
+
   .label-input {
     width: 100%;
     border-bottom: 2px solid grey;
+
     input,
     &:focus {
       float: right;
-      width: 60%;
+      width: 40vw;
       border: none;
       outline: none;
       background-color: lightgrey;
+      @media screen and (min-width: 600px) {
+        width: 60%;
+      }
     }
   }
 }
@@ -50,7 +58,7 @@ $white: whitesmoke;
 @mixin or-line {
   background-color: grey;
   height: 2px;
-  width: 25rem;
+  width: 90vw;
   margin: 2rem 0;
   position: relative;
   @include flex-column-center;

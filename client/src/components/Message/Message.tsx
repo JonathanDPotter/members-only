@@ -28,10 +28,13 @@ const Message: FC<Iprops> = ({
     "https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg";
   const navigate = useNavigate();
 
-  const deleteMessage = async (event: MouseEvent) => {
+  const deleteMessage = (event: MouseEvent) => {
     const { id } = event.currentTarget;
-    await api.deleteMessage(id);
-    navigate(0);
+    const confirm = window.confirm("Are You Sure?");
+    if (confirm) {
+      api.deleteMessage(id);
+      navigate(0);
+    }
   };
 
   return (
@@ -49,7 +52,11 @@ const Message: FC<Iprops> = ({
       <div className="date-time">
         <p>{new Date(createdAt).toLocaleDateString()}</p>
         <p>
-          {new Date(createdAt).toLocaleTimeString("en-us", { hour: '2-digit', minute: '2-digit', hour12: true })}
+          {new Date(createdAt).toLocaleTimeString("en-us", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          })}
         </p>
       </div>
       <div className={auth?.admin ? "delete auth" : "delete guest"}>

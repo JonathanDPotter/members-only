@@ -58,6 +58,7 @@ const Join = () => {
             name="member"
             onChange={handleChange}
             value={member}
+            autoFocus
           />
         </div>
         <button type="submit">Submit</button>

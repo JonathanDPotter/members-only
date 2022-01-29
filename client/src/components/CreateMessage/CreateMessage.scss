@@ -9,12 +9,16 @@
 
     textarea {
       height: 20vh;
-      width: 80%;
-      float: right;
+      width: 90%;
+      float: center;
       resize:none;
       border: none;
       background-color: lightgrey;
       outline: none;
+      @media screen and (min-width: 600px) {
+        width: 80%;
+        float: right;
+      }
     }
 
     .textarea {

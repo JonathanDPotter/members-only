@@ -45,6 +45,7 @@ const CreateMessage = () => {
 
   return (
     <div className="create-message">
+      <h1>Create Message</h1>
       <form onSubmit={handleSubmit}>
         <div className="label-input">
           <label htmlFor="title">Title: </label>
@@ -63,7 +64,7 @@ const CreateMessage = () => {
             name="body"
             onChange={handleChange}
             value={body}
-            maxLength={1500}
+            maxLength={500}
             required
           />
         </div>

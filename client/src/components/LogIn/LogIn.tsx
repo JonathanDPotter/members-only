@@ -55,6 +55,7 @@ const LogIn = () => {
             onChange={handleChange}
             value={displayName}
             autoComplete="username"
+            autoFocus
             required
           />
         </div>
