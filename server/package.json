@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "starter for mern with passport auth",
   "main": "server.ts",
+  "engines": {
+    "node": "16.13.2"
+  },
   "scripts": {
-    "dev": "concurrently \"nodemon source/server.ts\" \"cd .. && cd client && npm start\""
+    "dev": "concurrently \"nodemon source/server.ts\" \"cd .. && cd client && npm start\"",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master",
+    "postinstall": "tsc"
   },
   "keywords": [
     "typescript",

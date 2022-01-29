@@ -59,8 +59,11 @@ server.use("/api/user", userRoutes);
 server.use("/api/messages", messageRoutes);
 server.use("/api/avatar", avatarRoutes);
 
-server.get("/", (req, res) => res.send(req.body));
-server.get("/fail", (req, res) => res.send(req.body));
+// setup static folder for react app
+server.use(express.static(path.resolve(__dirname, "../client/build")));
+server.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
 
 server.listen(PORT ?? 1234, () =>
   console.log(`Server running in ${NODE_ENV} on port ${PORT}`)
