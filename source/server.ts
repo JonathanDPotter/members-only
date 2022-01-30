@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import path from "path";
 import dotenv from "dotenv";
 import morgan from "morgan";
@@ -59,11 +59,16 @@ server.use("/api/user", userRoutes);
 server.use("/api/messages", messageRoutes);
 server.use("/api/avatar", avatarRoutes);
 
-// setup static folder for react app
-server.use(express.static(path.resolve(__dirname, "../client/build")));
-server.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
+// serve static files if in production
+if (NODE_ENV === "production") {
+  server.use(express.static("client/build"));
+
+  server.get("/*", (req: Request, res: Response) => {
+    res.sendFile(
+      path.resolve(__dirname, "..", "client", "build", "index.html")
+    );
+  });
+}
 
 server.listen(PORT ?? 1234, () =>
   console.log(`Server running in ${NODE_ENV} on port ${PORT}`)

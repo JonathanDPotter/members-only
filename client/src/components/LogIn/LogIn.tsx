@@ -7,6 +7,7 @@ import api from "../../api";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 // styles
 import "./LogIn.scss";
+import axios from "axios";
 
 const LogIn = () => {
   const initialState = {
@@ -40,7 +41,7 @@ const LogIn = () => {
   };
 
   const handleGoogle = () => {
-    window.open("http://localhost:1337/api/auth/google", "_self");
+    api.googleLogin();
   };
 
   return (

@@ -66,7 +66,7 @@ const SignUp = () => {
   };
 
   const handleGoogle = () => {
-    window.open("http://localhost:1337/api/auth/google", "_self");
+    api.googleLogin();
   };
 
   useEffect(() => {

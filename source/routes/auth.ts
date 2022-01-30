@@ -9,10 +9,10 @@ Router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 Router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/signup",
+    failureRedirect: "/signup",
   }),
   (req: Request, res: Response) => {
-    res.redirect("http://localhost:3000");
+    res.redirect("/");
   }
 );
 
@@ -20,7 +20,7 @@ Router.post(
   "/local",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/fail",
+    failureRedirect: "/signup",
     failureFlash: true,
     successFlash: true,
   })

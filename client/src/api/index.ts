@@ -27,6 +27,10 @@ const getAvatar = async (options: { gender: string, id: number }) => {
   return response;
 }
 
+const googleLogin = () => {
+  axios.get("/api/auth/google");
+}
+
 const api = {
   getAuth,
   login,
@@ -35,7 +39,8 @@ const api = {
   createMessage,
   getMessages,
   deleteMessage,
-  getAvatar
+  getAvatar,
+  googleLogin
 };
 
 export default api;

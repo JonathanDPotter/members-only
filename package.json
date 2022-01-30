@@ -1,15 +1,19 @@
 {
-  "name": "mern-starter",
+  "name": "members-only",
   "version": "1.0.0",
-  "description": "starter for mern with passport auth",
-  "main": "server.ts",
+  "description": "Odin Project Members-Only",
+  "main": "source/server.ts",
   "engines": {
-    "node": "16.13.2"
+    "node": "16.13.2",
+    "npm": "7.12.1"
   },
   "scripts": {
-    "dev": "concurrently \"nodemon source/server.ts\" \"cd .. && cd client && npm start\"",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "server": "cd source && nodemon server.ts",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm install && cd client &&  npm install && npm run build",
+    "postinstall": "tsc"
   },
   "keywords": [
     "typescript",
@@ -22,6 +26,9 @@
   ],
   "author": "Joanthan Potter",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanDPotter/inventory/issues"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cartoon-avatar": "^1.0.2",
@@ -38,9 +45,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.5"
-  },
-  "devDependencies": {
+    "typescript": "^4.5.5",
     "@types/bcrypt": "^5.0.0",
     "@types/connect-mongo": "^3.1.3",
     "@types/cors": "^2.8.12",
