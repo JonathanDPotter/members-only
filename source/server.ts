@@ -37,6 +37,9 @@ if (NODE_ENV === "development") server.use(morgan("dev"));
 // set flash
 server.use(flash());
 
+// important for cors functionality (I think)
+server.set("trust proxy", 1);
+
 // set express-session
 server.use(
   session({
@@ -44,6 +47,7 @@ server.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: MONGO_URI ?? "URI" }),
+    cookie: { sameSite: "none", secure: true },
   })
 );
 
@@ -55,7 +59,15 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 // cors
-server.use(cors({ origin: "https://secure-reef-35994.herokuapp.com/" }));
+server.use(
+  cors({
+    origin: [
+      "https://secure-reef-35994.herokuapp.com/",
+      "https://accounts.google.com/o/oauth2",
+    ],
+    credentials: true,
+  })
+);
 
 // routes
 server.use("/api/auth", authRoutes);
