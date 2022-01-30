@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 // store
 import { store } from "./store";
@@ -8,7 +8,6 @@ import { store } from "./store";
 import App from "./App";
 // styles
 import "./index.scss";
-
 
 ReactDOM.render(
   <React.StrictMode>

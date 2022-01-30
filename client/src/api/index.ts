@@ -19,17 +19,21 @@ const createMessage = (message: InewMessage) =>
 const getMessages = () => axios.get("/api/messages/get/messages");
 
 const deleteMessage = (id: string) => {
-  axios.post("/api/messages/delete/message", {_id: id});
+  axios.post("/api/messages/delete/message", { _id: id });
 };
 
-const getAvatar = async (options: { gender: string, id: number }) => {
+const getAvatar = async (options: { gender: string; id: number }) => {
   const response = await axios.post("/api/avatar/get/avatar", options);
   return response;
-}
+};
 
 const googleLogin = () => {
   axios.get("/api/auth/google");
-}
+};
+
+const logOut = () => {
+  axios.get("api/auth/logout");
+};
 
 const api = {
   getAuth,
@@ -40,7 +44,8 @@ const api = {
   getMessages,
   deleteMessage,
   getAvatar,
-  googleLogin
+  googleLogin,
+  logOut,
 };
 
 export default api;

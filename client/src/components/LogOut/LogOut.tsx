@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 // styles
 import "./LogOut.scss";
+import api from "../../api";
 
 const LogOut = () => {
-  const logOut = () =>
-    window.open("http://localhost:1337/api/auth/logout", "_self");
+  const logOut = () => api.logOut();
 
   return (
     <div className="log-out">
