@@ -62,6 +62,9 @@ server.use(
   })
 );
 
+// trust proxy
+server.enable("trustProxy");
+
 // routes
 server.use("/api/auth", authRoutes);
 server.use("/api/user", userRoutes);
