@@ -61,10 +61,7 @@ server.use(passport.session());
 // cors
 server.use(
   cors({
-    origin: [
-      "https://secure-reef-35994.herokuapp.com/",
-      "https://accounts.google.com/o/oauth2",
-    ],
+    origin: "*",
     credentials: true,
   })
 );
