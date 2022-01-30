@@ -6,6 +6,7 @@ import passport from "passport";
 import session from "express-session";
 import flash from "express-flash";
 import MongoStore from "connect-mongo";
+import cors from "cors";
 //routes
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
@@ -52,6 +53,9 @@ passportConfig(passport);
 server.use(passport.initialize());
 
 server.use(passport.session());
+
+// cors
+server.use(cors());
 
 // routes
 server.use("/api/auth", authRoutes);
