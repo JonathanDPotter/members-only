@@ -11,6 +11,7 @@ export default (passport: PassportStatic) => {
         clientID: process.env.GOOGLE_CLIENT_ID ?? "",
         clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
         passReqToCallback: true,
+        proxy: true,
         callbackURL:
           "https://secure-reef-35994.herokuapp.com//api/auth/google/callback",
       },
