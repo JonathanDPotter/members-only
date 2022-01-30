@@ -1,7 +1,6 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as LocalStrategy } from "passport-local";
 import bcrypt from "bcrypt";
-import mongoose, { Document, Error } from "mongoose";
 import User from "../models/User";
 import { PassportStatic } from "passport";
 

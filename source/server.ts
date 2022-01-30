@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import passport from "passport";
 import session from "express-session";
-import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import cors from "cors";
 //routes
@@ -33,9 +32,6 @@ server.use(express.json());
 
 // logging with morgan set for dev only
 if (NODE_ENV === "development") server.use(morgan("dev"));
-
-// set flash
-server.use(flash());
 
 // important for cors functionality (I think)
 server.set("trust proxy", 1);
