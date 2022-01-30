@@ -55,7 +55,11 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 // cors
-server.use(cors());
+const whiteList = [
+  "https://secure-reef-35994.herokuapp.com/",
+  "https://accounts.google.com/",
+];
+server.use(cors({ origin: whiteList }));
 
 // routes
 server.use("/api/auth", authRoutes);
