@@ -13,6 +13,7 @@ const LogOut = () => {
   const logOut = () => {
     api.logOut();
     navigate("/");
+    navigate(0);
   };
 
   return (

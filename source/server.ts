@@ -55,11 +55,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 // cors
-
-server.all("/*", (req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+server.use(cors({ origin: "https://secure-reef-35994.herokuapp.com/" }));
 
 // routes
 server.use("/api/auth", authRoutes);
