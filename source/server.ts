@@ -55,18 +55,9 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 // cors
-const whiteList = [
-  "https://secure-reef-35994.herokuapp.com/",
-  "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=https%3A%2F%2Fsecure-reef-35994.herokuapp.com%2F%2Fapi%2Fauth%2Fgoogle%2Fcallback&scope=profile&client_id=1085757713654-5hllkudhdbui81f0tkj43ne5cr79jqrj.apps.googleusercontent.com",
-];
-// server.use(cors({ origin: whiteList }));
 
-server.use((req: Request, res: Response, next: NextFunction) => {
-  res.setHeader("Access-Control-Allow-Origin", whiteList);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+server.all("/*", (req: Request, res: Response, next: NextFunction) => {
+  res.header("Access-Control-Allow-Origin", "*");
   next();
 });
 
