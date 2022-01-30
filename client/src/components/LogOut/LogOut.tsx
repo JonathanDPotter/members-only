@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 // icons
 import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 // styles
@@ -7,7 +8,12 @@ import "./LogOut.scss";
 import api from "../../api";
 
 const LogOut = () => {
-  const logOut = () => api.logOut();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    api.logOut();
+    navigate("/");
+  };
 
   return (
     <div className="log-out">
