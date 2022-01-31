@@ -55,9 +55,15 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 // cors
+const whitelist: string[] = [
+  "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=https%3A%2F%2Fsecure-reef-35994.herokuapp.com%2Fundefined%2Fapi%2Fauth%2Fgoogle&scope=profile&client_id=1085757713654-5hllkudhdbui81f0tkj43ne5cr79jqrj.apps.googleusercontent.com",
+  "https://secure-reef-35994.herokuapp.com/api/auth/google",
+  "https://secure-reef-35994.herokuapp.com", "*"
+];
+
 server.use(
   cors({
-    origin: "*",
+    origin: whitelist,
     credentials: true,
   })
 );
