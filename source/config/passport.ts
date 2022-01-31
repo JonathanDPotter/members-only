@@ -12,7 +12,8 @@ export default (passport: PassportStatic) => {
       {
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: `/api/auth/google`,
+        callbackURL:
+          "https://secure-reef-35994.herokuapp.com//api/auth/google/callback",
       },
       async (_accessToken, _refreshToken, profile, done) => {
         const { id, displayName, name, photos } = profile;
