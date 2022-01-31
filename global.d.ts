@@ -7,6 +7,7 @@ declare global {
       GOOGLE_CLIENT_SECRET: string;
       MONGO_URI: string;
       SESSION_SECRET: string;
+      HOST: string;
     }
   }
 }
