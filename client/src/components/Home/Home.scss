@@ -3,4 +3,5 @@
 .home {
   @include theme.page; 
   @include theme.flex-column-center;
+  overflow-x: hidden;
 }

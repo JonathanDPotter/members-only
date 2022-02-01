@@ -15,6 +15,9 @@ import Framer from "./components/Framer/Framer";
 import LogIn from "./components/LogIn/LogIn";
 import CreateMessage from "./components/CreateMessage/CreateMessage";
 import Join from "./components/Join/Join";
+import Footer from "./components/Footer/Footer";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 // types
 import { Imessage } from "./interfaces/message";
 
@@ -32,7 +35,7 @@ const App = () => {
       const { messages } = response.data;
       messages.forEach((message: Imessage) => dispatch(addMessage(message)));
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -73,8 +76,11 @@ const App = () => {
               <Framer component={auth ? <LogOut /> : <Navigate to="/" />} />
             }
           />
+          <Route path="/about" element={<Framer component={<About />} />} />
+          <Route path="/contact" element={<Framer component={<Contact />} />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
+        <Footer />
       </AnimatePresence>
     </>
   );

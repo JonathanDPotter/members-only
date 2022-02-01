@@ -1,0 +1,10 @@
+@use "../../theme";
+
+.contact {
+  @include theme.page;
+  @include theme.flex-column-center;
+  justify-content: flex-start;
+  p {
+    max-width: 600px;
+  }
+}
