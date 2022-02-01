@@ -1,10 +1,7 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // utils
 import api from "../../api";
-// icons
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 // styles
 import "./SignUp.scss";
 
@@ -63,10 +60,6 @@ const SignUp = () => {
     }
     setState(initialState);
     navigate("/login");
-  };
-
-  const handleGoogle = () => {
-    api.googleLogin();
   };
 
   useEffect(() => {
@@ -164,13 +157,6 @@ const SignUp = () => {
           Submit
         </button>
       </form>
-      <div className="line">
-        <div className="or">or</div>
-      </div>
-      <button onClick={handleGoogle}>
-        <FontAwesomeIcon icon={faGoogle} />
-        <span>Sign Up with Google</span>
-      </button>
     </div>
   );
 };

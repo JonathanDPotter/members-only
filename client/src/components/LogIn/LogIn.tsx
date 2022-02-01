@@ -1,13 +1,9 @@
 import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // utils
 import api from "../../api";
-// icons
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 // styles
 import "./LogIn.scss";
-import axios from "axios";
 
 const LogIn = () => {
   const initialState = {
@@ -38,10 +34,6 @@ const LogIn = () => {
     setState(initialState);
     navigate("/");
     navigate(0);
-  };
-
-  const handleGoogle = () => {
-    api.googleLogin();
   };
 
   return (
@@ -75,13 +67,6 @@ const LogIn = () => {
           Submit
         </button>
       </form>
-      <div className="line">
-        <div className="or">or</div>
-      </div>
-      <button onClick={handleGoogle}>
-        <FontAwesomeIcon icon={faGoogle} />
-        <span>Log In with Google</span>
-      </button>
     </div>
   );
 };

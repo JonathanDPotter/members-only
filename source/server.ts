@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import path from "path";
 import dotenv from "dotenv";
 import morgan from "morgan";
@@ -27,7 +27,7 @@ connectDB();
 const server = express();
 
 // parse requests
-server.use(express.urlencoded());
+server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 
 // logging with morgan set for dev only
@@ -56,13 +56,9 @@ server.use(passport.session());
 server.use(
   cors({
     origin: "https://secure-reef-35994.herokuapp.com",
-    allowedHeaders: "*",
     credentials: true,
   })
 );
-
-// important for cors functionality (I think)
-server.set("trust proxy", 1);
 
 // routes
 server.use("/api/auth", authRoutes);

@@ -4,18 +4,6 @@ import controller from "../controllers/auth";
 
 const Router = express.Router();
 
-Router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
-
-Router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    failureRedirect: "/signup",
-  }),
-  (req: Request, res: Response) => {
-    res.redirect("/");
-  }
-);
-
 Router.post(
   "/local",
   passport.authenticate("local", {

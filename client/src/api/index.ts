@@ -27,10 +27,6 @@ const getAvatar = async (options: { gender: string; id: number }) => {
   return response;
 };
 
-const googleLogin = () => {
-  axios.get("/api/auth/google");
-};
-
 const logOut = () => {
   axios.get("api/auth/logout");
 };
@@ -44,7 +40,6 @@ const api = {
   getMessages,
   deleteMessage,
   getAvatar,
-  googleLogin,
   logOut,
 };
 

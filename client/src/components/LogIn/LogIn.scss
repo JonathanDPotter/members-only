@@ -12,10 +12,6 @@
     @include theme.auth-form;
   }
 
-  .line {
-    @include theme.or-line;
-  }
-
   button {
     @include theme.big-button;
   }

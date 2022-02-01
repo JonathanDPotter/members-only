@@ -54,23 +54,3 @@ $white: whitesmoke;
     }
   }
 }
-
-@mixin or-line {
-  background-color: grey;
-  height: 2px;
-  width: 90vw;
-  margin: 2rem 0;
-  position: relative;
-  @include flex-column-center;
-
-  .or {
-    @include flex-column-center;
-    height: 2rem;
-    width: 2rem;
-    position: absolute;
-    margin: auto;
-    border: 2px solid grey;
-    border-radius: 50%;
-    background-color: whitesmoke;
-  }
-}
