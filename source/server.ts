@@ -55,7 +55,7 @@ server.use(passport.session());
 
 server.use(
   cors({
-    origin: "https://secure-reef-35994.herokuapp.com",
+    origin: "*",
     credentials: true,
   })
 );
